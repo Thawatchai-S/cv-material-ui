@@ -30,7 +30,8 @@ import TimelineConnector from '@material-ui/lab/TimelineConnector';
 import TimelineContent from '@material-ui/lab/TimelineContent';
 import TimelineDot from '@material-ui/lab/TimelineDot';
 import TimelineOppositeContent from '@material-ui/lab/TimelineOppositeContent';
-
+import Chip from '@material-ui/core/Chip';
+import Button from '@material-ui/core/Button';
 // icon
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import WorkIcon from '@material-ui/icons/Work';
@@ -38,10 +39,44 @@ import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import LocalPhoneIcon from '@material-ui/icons/LocalPhone';
 import EmailIcon from '@material-ui/icons/Email';
 // image
-import img_profile from './img_profile.jpeg'
+import img_profile from './img/img_profile.jpeg'
+//color
+import lime from '@material-ui/core/colors/lime';
+import lightBlue from '@material-ui/core/colors/lightBlue';
+//font
+import { MuiThemeProvider , createTheme  } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+import '../App.css'
 
 const drawerWidth = 220;
+const theme = createTheme({
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
+  },
+});
 const useStyles = makeStyles((theme) => ({
+  Basic: {
+    backgroundColor: lightBlue[500],
+    width: 100,
+    fontWeight:'Bold',
+    
+  },
+  Intermidiate: {
+    backgroundColor: lime[500],
+    width: 150,
+    fontWeight:'Bold',
+  },
   root: {
     display: 'flex',
   },
@@ -142,7 +177,7 @@ export default function Home(props) {
         })}
       >
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -150,7 +185,7 @@ export default function Home(props) {
             className={clsx(classes.menuButton, open && classes.hide)}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography variant="h6" noWrap>
             CV profile
           </Typography>
@@ -221,10 +256,13 @@ export default function Home(props) {
                             <Grid item xs={12}>
                               <Card className={classes.text_box}>
                                 <CardContent>
-                                    <Typography variant="body2" component="p">
-                                      I graduated from King Mongkut’s University of Technology North Bangkok Department of Computer Science.
-                                      Internship at M.A.D. Technology Develop Warehouse for rental product.
-                                    </Typography>
+                                  <Typography variant="h6" component="h6">
+                                    About me
+                                  </Typography>
+                                  <Typography variant="body2" component="p">
+                                    I graduated from King Mongkut’s University of Technology North Bangkok Department of Computer Science.
+                                    Internship at M.A.D. Technology Develop Warehouse for rental product.
+                                  </Typography>
                                 </CardContent>
                               </Card>  
                             </Grid>
@@ -263,13 +301,66 @@ export default function Home(props) {
                       >
                         <Grid item xs={12} sm={12} md={12}>
                           <Card className={classes}>
+                            <CardHeader
+                              title="Coding Skill"
+                            />
+                            <CardContent>
+                              <Grid
+                                container
+                                direction="row"
+                                justifyContent="flex-start"
+                                alignItems="center"
+                                spacing={2}
+                              >
+                                <Grid item xs={4}>
+                                  <Typography>C / C++</Typography>
+                                </Grid>
+                                <Grid item xs={8}>
+                                  <Chip className={classes.Intermidiate} label="Intermidiate" />
+                                </Grid>
+                                <Grid item xs={4}>
+                                  <Typography>javascript</Typography>
+                                </Grid>
+                                <Grid item xs={8}>
+                                  <Chip className={classes.Basic} label="Basic" />
+                                </Grid>
+                                <Grid item xs={4}>
+                                  <Typography>HTML</Typography>
+                                </Grid>
+                                <Grid item xs={8}>
+                                  <Chip className={classes.Intermidiate} label="Intermidiate" />
+                                </Grid>
+                                <Grid item xs={4}>
+                                  <Typography>Python</Typography>
+                                </Grid>
+                                <Grid item xs={8}>
+                                  <Chip className={classes.Intermidiate} label="Intermidiate" />
+                                </Grid> 
+                                <Grid item xs={4}>
+                                  <Typography>SQL</Typography>
+                                </Grid>
+                                <Grid item xs={8}>
+                                  <Chip className={classes.Basic} label="Basic" />
+                                </Grid> 
+                                <Grid item xs={4}>
+                                  <Typography>CSS</Typography>
+                                </Grid>
+                                <Grid item xs={8}>
+                                  <Chip className={classes.Intermidiate} label="Intermidiate" />
+                                </Grid> 
+                              </Grid>
+                            </CardContent>
+                          </Card>  
+                        </Grid>
+                        <Grid item xs={12} sm={12} md={12}>
+                          <Card className={classes}>
                               <CardHeader
                                 title="Work Experience"
                               />
                                 <Timeline>
                                   <TimelineItem >
                                     <TimelineOppositeContent className={classes.timeline_start}>
-                                      <Typography color="textSecondary">15-May-2020</Typography>
+                                      <Typography color="textSecondary">16-Nov-2020</Typography>
                                     </TimelineOppositeContent>
                                     <TimelineSeparator>
                                       <TimelineDot />
@@ -283,18 +374,35 @@ export default function Home(props) {
                                 </Timeline>
                           </Card>  
                         </Grid>
+
                         <Grid item xs={12} sm={12} md={12}>
-                          <Card className={classes.root}>
-                              <CardHeader
-                                title="Coding Skill"
-                              />
-                          </Card>  
-                        </Grid>
-                        <Grid item xs={12} sm={12} md={12}>
-                          <Card className={classes.root}>
-                              <CardHeader
-                                title="Coding Skill"
-                              />
+                          <Card className={classes}>
+                            <CardHeader
+                              title="Education"
+                            />
+                            <Timeline>
+                              
+                              <TimelineItem >
+                                <TimelineOppositeContent className={classes.timeline_start}>
+                                  <Typography color="textSecondary">1-Jan-2017</Typography>
+                                </TimelineOppositeContent>
+                                <TimelineSeparator>
+                                  <TimelineDot />
+                                </TimelineSeparator>
+                                <TimelineContent>
+                                  <Typography>King Mongkut's University of Technology North Bangkok</Typography>
+                                  <Typography >Numerical Project</Typography>
+                                  <Typography variant="body2" component="p">- Develop Web Frontend using by Ant Design Framework and React framework.Coding project with Javascript.</Typography>
+                                  <Typography variant="body2" component="p">- Coding Backend using by Nodejs , MongoDB and Docker.</Typography>
+                                  <Typography >Pizzaham Project</Typography>
+                                  <Typography variant="body2" component="p">- Develop Web Frontend using by Bootstrap Framework. Coding project with HTML</Typography>
+                                  <Typography variant="body2" component="p">- Coding Backend using by PHP and phpmyadmin.</Typography>
+                                  <Typography >THAI Ornamental Fish platform project</Typography>
+                                  <Typography variant="body2" component="p">- Develop Web Frontend using by Bootstrap Framework. Coding project with HTML and Javascript.</Typography>
+                                  <Typography variant="body2" component="p">- Coding Backend using by Flask Framework.Coding project with Python and SQLite3.</Typography>
+                                </TimelineContent>
+                              </TimelineItem>
+                            </Timeline>
                           </Card>  
                         </Grid>
                       </Grid>
@@ -303,6 +411,7 @@ export default function Home(props) {
             </Container>
         </main>
     </div>
+  
   );
 }
 
